@@ -11,8 +11,8 @@ StudentWidget::StudentWidget(QStandardItemModel *m,QWidget *parent):modelCourse(
     init();
    // modelCourse=m;
     connect(buttonEnter,SIGNAL(clicked()),this,SLOT(update()));
-    connect(otherButton,SIGNAL(clicked()),this,SLOT(update()));
-    connect(comboGrade,SIGNAL(valueChanged()),this,SLOT(update()));
+   // connect(otherButton,SIGNAL(clicked()),this,SLOT(update()));
+   // connect(comboGrade,SIGNAL(valueChanged()),this,SLOT(update()));
     //connect(buttonEnter,SIGNAL(clicked()),this,SLOT(update()));
     //update();
 
@@ -29,12 +29,13 @@ void StudentWidget::init(){
     comboCourse= new QComboBox;
     comboGrade = new QComboBox;
     buttonEnter = new QPushButton("Enter Course");
-    otherButton = new QPushButton("Other");
+    //otherButton = new QPushButton("Other");
     modelGrade = new QStringListModel;
     modelStudent= new QStandardItemModel;
     //modelCourse = new QStandardItemModel;
     QStringList header;
     header.append(QString("Title"));
+    header.append(QString("Credit Hours"));
     header.append(QString("Grade"));
     modelStudent->setHorizontalHeaderLabels(header);
     courseList = new QTableView;
@@ -43,6 +44,7 @@ void StudentWidget::init(){
     modelGrade->setStringList(gradeList);
     comboGrade->setModel(modelGrade);
     comboCourse->setModel(modelCourse);
+    //comboCourse->setModelColumn(1);
     courseList->setModel(modelStudent);
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(labelCourse);
@@ -50,16 +52,12 @@ void StudentWidget::init(){
     layout->addWidget(labelGrade);
     layout->addWidget(comboGrade);
     layout->addWidget(buttonEnter);
-    layout->addWidget(otherButton);
+    //layout->addWidget(otherButton);
     QVBoxLayout *vLayout = new QVBoxLayout;
     vLayout->addLayout(layout);
     vLayout->addWidget(courseList);
     setLayout(vLayout);
-     //connect(buttonEnter,SIGNAL(clicked()),this,SLOT(update()));
-
-    
-    
-    
+      
 } 
 
 void StudentWidget::update(){
@@ -67,10 +65,19 @@ void StudentWidget::update(){
    //QMessageBox::information(this,QString("Result"),QString("Course:"+comboCourse->itemText(comboCourse->currentIndex())+" Grade:"+comboGrade->itemText(comboGrade->currentIndex())));
 
     QStandardItem *title= new QStandardItem(comboCourse->itemText(comboCourse->currentIndex()));
+    QModelIndex index = modelCourse->index(0,1);
+   // QStandardItem *hours= modelCourse->itemFromIndex(index);
+        QStandardItem *hours= modelCourse->item(comboCourse->currentIndex(),1)->clone();
+
+    
+        //QStandardItem *hours= modelCourse->takeItem(0,1);
+
     QStandardItem *grade = new QStandardItem(comboGrade->itemText(comboGrade->currentIndex()));
     QList<QStandardItem *> list;
-    list << title<< grade;
+    list << title<<hours<< grade;
     modelStudent->appendRow(list);
+          //  modelStudent->setItem(0,1,new QStandardItem(comboCourse->itemText(comboCourse->currentIndex())));
+
 }
 void StudentWidget::setModel(QStandardItemModel *m){
     modelCourse=m;

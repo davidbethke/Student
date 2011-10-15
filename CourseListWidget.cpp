@@ -62,3 +62,6 @@ void CourseListWidget::update(){
     courseList->appendRow(list);
     
 }
+QStandardItemModel* CourseListWidget::getModel(){
+    return courseList;
+}

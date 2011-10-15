@@ -7,6 +7,7 @@
 
 #include <QtGui/QApplication>
 #include "CourseListWidget.h"
+#include "StudentWidget.h"
 
 int main(int argc, char *argv[]) {
     // initialize resources, if needed
@@ -14,7 +15,13 @@ int main(int argc, char *argv[]) {
 
     QApplication app(argc, argv);
     CourseListWidget courseList;
+    StudentWidget student(courseList.getModel());
+      //  StudentWidget student;
+      //  student.setModel(courseList.getModel());
+
     courseList.setWindowTitle("Course List");
+    student.setWindowTitle("Student");
+    student.show();
     courseList.show();
 
     // create and show your widgets here

@@ -17,6 +17,7 @@ public:
     explicit CourseListWidget(QWidget *parent=0);
     CourseListWidget(const CourseListWidget& orig);
     virtual ~CourseListWidget();
+    QStandardItemModel* getModel();
     
 private:
     // build the window
@@ -26,7 +27,8 @@ private:
     QLineEdit *editCourse;
     QStringList listHours;
     QPushButton *buttonEnter;
-    QStandardItemModel *model;
+    QStandardItemModel *courseList;
+    QTableView* tableCourse;
     void init();
     
     public slots:
