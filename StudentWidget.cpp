@@ -9,13 +9,8 @@
 
 StudentWidget::StudentWidget(QStandardItemModel *m,QWidget *parent):modelCourse(m),QWidget(parent) {
     init();
-   // modelCourse=m;
     connect(buttonEnter,SIGNAL(clicked()),this,SLOT(update()));
-   // connect(otherButton,SIGNAL(clicked()),this,SLOT(update()));
-   // connect(comboGrade,SIGNAL(valueChanged()),this,SLOT(update()));
-    //connect(buttonEnter,SIGNAL(clicked()),this,SLOT(update()));
-    //update();
-
+   
 }
 
 StudentWidget::StudentWidget(const StudentWidget& orig) {
@@ -65,7 +60,7 @@ void StudentWidget::update(){
    //QMessageBox::information(this,QString("Result"),QString("Course:"+comboCourse->itemText(comboCourse->currentIndex())+" Grade:"+comboGrade->itemText(comboGrade->currentIndex())));
 
     QStandardItem *title= new QStandardItem(comboCourse->itemText(comboCourse->currentIndex()));
-    QModelIndex index = modelCourse->index(0,1);
+    //QModelIndex index = modelCourse->index(0,1);
    // QStandardItem *hours= modelCourse->itemFromIndex(index);
         QStandardItem *hours= modelCourse->item(comboCourse->currentIndex(),1)->clone();
 
