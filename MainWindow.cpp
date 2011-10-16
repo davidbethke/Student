@@ -9,6 +9,7 @@
 #include <QtGui>
 
 MainWindow::MainWindow(QWidget *parent):QWidget(parent) {
+    init();
 }
 
 MainWindow::MainWindow(const MainWindow& orig) {
@@ -17,18 +18,21 @@ MainWindow::MainWindow(const MainWindow& orig) {
 MainWindow::~MainWindow() {
 }
 void MainWindow::init(){
+    
     modelCourses = new QStandardItemModel;
     modelStudent = new QStandardItemModel;
     treeCourses = new QTreeView;
     tableStudent = new QTableView;
     addStudent = new AddStudentWidget(modelStudent);
     courseList = new CourseListWidget;
+    
     QStringList header;
     header.append(QString("Name"));
     header.append(QString("Credit Hours"));
     header.append(QString("GPAA"));
     modelStudent->setHorizontalHeaderLabels(header);
     tableStudent->setModel(modelStudent);
+    tableStudent->setMinimumWidth(450);
     treeCourses->setModel(modelCourses);
     // layout
     QVBoxLayout *vLayout = new QVBoxLayout;
@@ -41,11 +45,12 @@ void MainWindow::init(){
     hLayout->addLayout(vLayout);
     hLayout->addLayout(vLayout2);
     setLayout(hLayout);
+    /*
     addStudent->show();
     courseList->show();
     tableStudent->show();
-
-            
+    treeCourses->show();
+     */
     
     
 }

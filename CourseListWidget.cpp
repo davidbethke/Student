@@ -31,6 +31,7 @@ void CourseListWidget::init(){
     comboHours= new QComboBox;
     buttonEnter= new QPushButton("Enter New Course");
     courseList=new QStandardItemModel();
+    QLabel *labelCourses= new QLabel("ALL Courses");
     QStringList header;
     header.append(QString("Title"));
     header.append(QString("Credit Hours"));
@@ -45,6 +46,7 @@ void CourseListWidget::init(){
     layout->addWidget(comboHours);
     layout->addWidget(buttonEnter);
     vLayout->addLayout(layout);
+    vLayout->addWidget(labelCourses);
     vLayout->addWidget(tableCourse);
     setLayout(vLayout);
     listHours<<"5"<<"4"<<"3"<<"2"<<"1"<<"0";

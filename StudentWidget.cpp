@@ -24,6 +24,7 @@ void StudentWidget::init(){
     comboCourse= new QComboBox;
     comboGrade = new QComboBox;
     buttonEnter = new QPushButton("Enter Course");
+    QLabel *labelCourses = new QLabel("ALL Student Courses");
     //otherButton = new QPushButton("Other");
     modelGrade = new QStringListModel;
     modelStudent= new QStandardItemModel;
@@ -50,6 +51,7 @@ void StudentWidget::init(){
     //layout->addWidget(otherButton);
     QVBoxLayout *vLayout = new QVBoxLayout;
     vLayout->addLayout(layout);
+    vLayout->addWidget(labelCourses);
     vLayout->addWidget(courseList);
     setLayout(vLayout);
       

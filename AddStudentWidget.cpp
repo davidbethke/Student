@@ -29,9 +29,11 @@ void AddStudentWidget::init(){
     layout->addWidget(labelName);
     layout->addWidget(editName);
     layout->addWidget(labelHours);
+    layout->addWidget(editHours);
     layout->addWidget(labelGpa);
     layout->addWidget(editGpa);
     layout->addWidget(buttonEnter);
+    setLayout(layout);
     
 }
 void AddStudentWidget::update(){

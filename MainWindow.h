@@ -25,6 +25,8 @@ private:
     AddStudentWidget *addStudent;
     CourseListWidget *courseList;
     void init();
+    public slots:
+        
 };
 
 #endif	/* MAINWINDOW_H */
