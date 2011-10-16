@@ -29,7 +29,7 @@ private:
     QLineEdit *editGpa;
     QPushButton *buttonEnter;
     QStandardItemModel *modelStudent;
-    QWidget *p;
+    
     void init();
     Student getStudent(QString,QString,QString);
 public slots:

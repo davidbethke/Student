@@ -54,8 +54,15 @@ void MainWindow::init(){
     
     
 }
-void MainWindow::createStudentWidget(Student s){
-    StudentWidget *studentWidget = new StudentWidget(courseList->getModel());
+void MainWindow::createStudentWidget(QString n,QString h,QString g){
+    Student *someStudent= new Student;
+    someStudent->setName(n);
+    someStudent->setHours(h.toInt());
+    someStudent->setGpa(g.toDouble());
+    QMessageBox::information(this,QString("Result"),QString("name:"+someStudent->getName()));
+    StudentWidget *studentWidget = new StudentWidget(someStudent,courseList->getModel());
+    
+
     studentWidget->show();
 }
 

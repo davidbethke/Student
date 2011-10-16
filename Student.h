@@ -12,12 +12,15 @@
 class Student {
 public:
     Student();
-    Student(QString,int h=0,double g=0.0);
+    Student(QString,int,double);
     Student(const Student& orig);
     virtual ~Student();
     QString getName();
     int getHours();
     double getGpa();
+    void setName(QString);
+    void setHours(int);
+    void setGpa(double);
     
 private:
     

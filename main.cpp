@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     MainWindow w;
     w.setWindowTitle("Student/Courses App");
-    w.resize(800,600);
+    w.resize(600,800);
     w.show();
     
     //CourseListWidget courseList;

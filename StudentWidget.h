@@ -15,7 +15,7 @@ class StudentWidget:public QWidget{
     Q_OBJECT
 public:
     StudentWidget(QStandardItemModel*m, QWidget *parent=0);
-    StudentWidget(Student,QStandardItemModel*,QStandardItemModel*,QWidget *parent=0);
+    StudentWidget(Student*,QStandardItemModel*,QWidget *parent=0);
     //StudentWidget(QWidget *parent=0);
     StudentWidget(const StudentWidget& orig);
     virtual ~StudentWidget();
@@ -30,6 +30,7 @@ private:
     QStandardItemModel *modelCourse;
     QTableView *courseList;
     QStandardItemModel *modelStudent;
+    Student *student;
     void init();
     
     public slots:

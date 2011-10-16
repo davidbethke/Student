@@ -39,3 +39,12 @@ void Student::calcGpa(int h,double g){
     gpa = ((gpa * hoursAttempted)+(g*h))/(hoursAttempted+h);
     
 }
+void Student::setGpa(double g){
+    gpa=g;
+}
+void Student::setHours(int h){
+    hoursAttempted=h;
+}
+void Student::setName(QString n){
+    name=n;
+}
