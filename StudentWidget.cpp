@@ -12,6 +12,11 @@ StudentWidget::StudentWidget(QStandardItemModel *m,QWidget *parent):modelCourse(
     connect(buttonEnter,SIGNAL(clicked()),this,SLOT(update()));
    
 }
+StudentWidget::StudentWidget(Student s,QStandardItemModel *mS,QStandardItemModel *m,QWidget *parent):modelCourse(m),QWidget(parent) {
+    init();
+    connect(buttonEnter,SIGNAL(clicked()),this,SLOT(update()));
+   
+}
 
 StudentWidget::StudentWidget(const StudentWidget& orig) {
 }

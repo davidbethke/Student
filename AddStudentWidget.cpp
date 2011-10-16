@@ -6,10 +6,11 @@
  */
 
 #include "AddStudentWidget.h"
-
+#include "MainWindow.h"
 AddStudentWidget::AddStudentWidget(QStandardItemModel *m,QWidget *parent):modelStudent(m),QWidget(parent) {
     init();
     connect(buttonEnter,SIGNAL(clicked()),this,SLOT(update()));
+    p=parent;
 }
 
 AddStudentWidget::AddStudentWidget(const AddStudentWidget& orig) {
@@ -33,7 +34,9 @@ void AddStudentWidget::init(){
     layout->addWidget(labelGpa);
     layout->addWidget(editGpa);
     layout->addWidget(buttonEnter);
+    
     setLayout(layout);
+    resize(400,60);
     
 }
 void AddStudentWidget::update(){
@@ -44,4 +47,12 @@ void AddStudentWidget::update(){
     QList<QStandardItem *> list;
     list << name<<hours<<gpa;
     modelStudent->appendRow(list);
+    //dummys
+    Student s;
+    static_cast<MainWindow *>(parentWidget())->createStudentWidget(s);
+    static_cast<MainWindow *>(p)->createStudentWidget(s);
+    //StudentWidget studentWidget(getStudent(editName->text(),editHours->text(),editGpa->text()),)
+}
+Student AddStudentWidget::getStudent(QString n, QString h, QString g){
+    return Student(n,h.toInt(),g.toDouble());
 }

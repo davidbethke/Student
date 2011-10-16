@@ -10,10 +10,12 @@
 #define	STUDENTWIDGET_H
 #include <QWidget>
 #include <QtGui>
+#include "Student.h"
 class StudentWidget:public QWidget{
     Q_OBJECT
 public:
     StudentWidget(QStandardItemModel*m, QWidget *parent=0);
+    StudentWidget(Student,QStandardItemModel*,QStandardItemModel*,QWidget *parent=0);
     //StudentWidget(QWidget *parent=0);
     StudentWidget(const StudentWidget& orig);
     virtual ~StudentWidget();

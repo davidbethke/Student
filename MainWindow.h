@@ -10,6 +10,8 @@
 #include <QWidget>
 #include "AddStudentWidget.h"
 #include "CourseListWidget.h"
+#include "StudentWidget.h"
+#include "Student.h"
 class MainWindow:public QWidget {
     Q_OBJECT
 public:
@@ -25,7 +27,8 @@ private:
     AddStudentWidget *addStudent;
     CourseListWidget *courseList;
     void init();
-    public slots:
+public slots:
+    void createStudentWidget(Student);
         
 };
 

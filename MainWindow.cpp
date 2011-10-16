@@ -23,7 +23,7 @@ void MainWindow::init(){
     modelStudent = new QStandardItemModel;
     treeCourses = new QTreeView;
     tableStudent = new QTableView;
-    addStudent = new AddStudentWidget(modelStudent);
+    addStudent = new AddStudentWidget(modelStudent,this);
     courseList = new CourseListWidget;
     
     QStringList header;
@@ -32,7 +32,7 @@ void MainWindow::init(){
     header.append(QString("GPAA"));
     modelStudent->setHorizontalHeaderLabels(header);
     tableStudent->setModel(modelStudent);
-    tableStudent->setMinimumWidth(450);
+    tableStudent->setMinimumWidth(300);
     treeCourses->setModel(modelCourses);
     // layout
     QVBoxLayout *vLayout = new QVBoxLayout;
@@ -53,5 +53,9 @@ void MainWindow::init(){
      */
     
     
+}
+void MainWindow::createStudentWidget(Student s){
+    StudentWidget *studentWidget = new StudentWidget(courseList->getModel());
+    studentWidget->show();
 }
 

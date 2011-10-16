@@ -9,10 +9,15 @@
 #define	ADDSTUDENTWIDGET_H
 #include <QWidget>
 #include <QtGui>
+#include "Student.h"
+
+
+
 class AddStudentWidget:public QWidget {
     Q_OBJECT
 public:
     AddStudentWidget(QStandardItemModel*,QWidget *parent=0);
+    //AddStudentWidget(QStandardItemModel*,QWidget *parent=0);
     AddStudentWidget(const AddStudentWidget& orig);
     virtual ~AddStudentWidget();
 private:
@@ -24,7 +29,9 @@ private:
     QLineEdit *editGpa;
     QPushButton *buttonEnter;
     QStandardItemModel *modelStudent;
+    QWidget *p;
     void init();
+    Student getStudent(QString,QString,QString);
 public slots:
     void update();
 
