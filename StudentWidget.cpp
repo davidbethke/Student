@@ -12,11 +12,13 @@ StudentWidget::StudentWidget(QStandardItemModel *m,QWidget *parent):modelCourse(
     connect(buttonEnter,SIGNAL(clicked()),this,SLOT(update()));
    
 }
+/*
 StudentWidget::StudentWidget(Student *s,QStandardItemModel *m,QWidget *parent):student(s),modelCourse(m),QWidget(parent) {
     init();
     connect(buttonEnter,SIGNAL(clicked()),this,SLOT(update()));
    
 }
+ */
 StudentWidget::StudentWidget(Student *s,QStandardItemModel *mG,QStandardItemModel *m,QWidget *parent):student(s),modelGpa(mG),modelCourse(m),QWidget(parent) {
     init();
     connect(buttonEnter,SIGNAL(clicked()),this,SLOT(update()));
@@ -70,8 +72,9 @@ void StudentWidget::init(){
 
 void StudentWidget::update(){
     // do something
-   //QMessageBox::information(this,QString("Result"),QString("Course:"+comboCourse->itemText(comboCourse->currentIndex())+" Grade:"+comboGrade->itemText(comboGrade->currentIndex())));
-
+   //QMessageBox::information(this,QString("Result"),QString("Name:"+student->getName()));
+    //QString *studentName;
+    //*studentName=student->getName();
     QStandardItem *title= new QStandardItem(comboCourse->itemText(comboCourse->currentIndex()));
     //QModelIndex index = modelCourse->index(0,1);
    // QStandardItem *hours= modelCourse->itemFromIndex(index);
@@ -84,25 +87,28 @@ void StudentWidget::update(){
     QList<QStandardItem *> list;
     list << title<<hours<< grade;
     modelStudent->appendRow(list);
-    //student = new Student()
-    //  modelStudent->setItem(0,1,new QStandardItem(comboCourse->itemText(comboCourse->currentIndex())));
-    // calc new gpa and add hours to hours completed, then update model from parent
-    //double gradeConv=student->gradeToDouble(comboGrade->itemText(comboGrade->currentIndex()));
-    student->addCourse(hours->text().toInt(),comboGrade->itemText(comboGrade->currentIndex()));
-    //student->addHours(hours->text().toInt());
-    //update model with getGpa and getHours
-    // fucking fuck up mother fucker
-    QString  qFuck1,qFuck2, qFuck3;
     
-    qFuck1="Fuck1";qFuck2="Fuck2";qFuck3="Fuck3";
-    QStandardItem *fuck1 = new QStandardItem(qFuck1);
-    QStandardItem *fuck2 = new QStandardItem(qFuck2);
-    QStandardItem *fuck3 = new QStandardItem(qFuck3);
-    QList<QStandardItem *> list2;
-    list2 << fuck1<<fuck2<<fuck3;
-    static_cast<MainWindow *>(parentWidget())->getStudentModel()->appendRow(list2);
-    //addStudent->getModel()->appendRow(list);
-    static_cast<MainWindow *>(parentWidget())->updateGpa(student);
+    student->addCourse(hours->text().toInt(),comboGrade->itemText(comboGrade->currentIndex()));
+    
+    // take from main
+    QString hoursInt, gpaDouble;
+    QString dave = "Fucker";
+    //QModelIndex index = modelGpa->pare
+    QStandardItem *name = new QStandardItem(student->getName());
+    //QStandardItem *daveName = new QStandardItem(dave);
+    QStandardItem *hoursG = new QStandardItem(hoursInt.setNum(student->getHours()));
+    QStandardItem *gpaG = new QStandardItem(gpaDouble.setNum(student->getGpa()));
+    //modelGpa->findItems()
+    // loop on fucking model?
+    int studentRow=0;
+    for (int i=0; i< modelGpa->rowCount();i++)
+    {
+        if(modelGpa->item(i,0)->text() == student->getName())
+            studentRow=i;
+        }
+    //QModelIndex index = modelGpa->indexFromItem(name);
+    modelGpa->setItem(studentRow,1,hoursG);
+    modelGpa->setItem(studentRow,2,gpaG);
 
 }
 void StudentWidget::setModel(QStandardItemModel *m){

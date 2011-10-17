@@ -20,26 +20,26 @@ MainWindow::~MainWindow() {
 void MainWindow::init(){
     
     modelCourses = new QStandardItemModel;
-    modelStudent = new QStandardItemModel;
+   // modelStudent = new QStandardItemModel;
     treeCourses = new QTreeView;
-    tableStudent = new QTableView;
-    addStudent = new AddStudentWidget(modelStudent);
+    //tableStudent = new QTableView;
+    addStudent = new AddStudentWidget();
     courseList = new CourseListWidget;
     
     QStringList header;
     header.append(QString("Name"));
     header.append(QString("Credit Hours"));
     header.append(QString("GPAA"));
-    modelStudent->setHorizontalHeaderLabels(header);
-    tableStudent->setModel(modelStudent);
-    tableStudent->setMinimumWidth(300);
+   // modelStudent->setHorizontalHeaderLabels(header);
+    //tableStudent->setModel(modelStudent);
+    //tableStudent->setMinimumWidth(300);
     treeCourses->setModel(modelCourses);
     // layout
     QVBoxLayout *vLayout = new QVBoxLayout;
     QVBoxLayout *vLayout2 = new QVBoxLayout;
     QHBoxLayout *hLayout = new QHBoxLayout;
     vLayout->addWidget(treeCourses);
-    vLayout->addWidget(tableStudent);
+    //vLayout->addWidget(tableStudent);
     vLayout2->addWidget(addStudent);
     vLayout2->addWidget(courseList);
     hLayout->addLayout(vLayout);
@@ -60,8 +60,8 @@ void MainWindow::createStudentWidget(QString n,QString h,QString g){
     someStudent->setHours(h.toInt());
     someStudent->setGpa(g.toDouble());
     //QMessageBox::information(this,QString("Result"),QString("name:"+someStudent->getName()));
-    StudentWidget *studentWidget = new StudentWidget(someStudent,courseList->getModel());
-    studentWidget->show();
+   // StudentWidget *studentWidget = new StudentWidget(someStudent,courseList->getModel());
+    //studentWidget->show();
 }
 void MainWindow::updateGpa(Student*s){
     // this method should update the modelStudent w/ the new GPA and total hoursAttempted, it will be displayed
@@ -97,6 +97,11 @@ void MainWindow::updateGpa(Student*s){
     */
     // is that it?
 }
+/*
 QStandardItemModel* MainWindow::getStudentModel(){
     return modelStudent;
+}
+ */
+CourseListWidget* MainWindow::getCourseList(){
+    return courseList;
 }

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'AddStudentWidget.h'
 **
-** Created: Mon Oct 17 11:40:29 2011
+** Created: Mon Oct 17 15:04:28 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_AddStudentWidget[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -33,6 +33,7 @@ static const uint qt_meta_data_AddStudentWidget[] = {
  // slots: signature, parameters, type, tag, flags
       18,   17,   17,   17, 0x0a,
       47,   17,   27,   17, 0x0a,
+      58,   17,   17,   17, 0x0a,
 
        0        // eod
 };
@@ -40,6 +41,7 @@ static const uint qt_meta_data_AddStudentWidget[] = {
 static const char qt_meta_stringdata_AddStudentWidget[] = {
     "AddStudentWidget\0\0update()\0"
     "QStandardItemModel*\0getModel()\0"
+    "updateGpa(Student*)\0"
 };
 
 const QMetaObject AddStudentWidget::staticMetaObject = {
@@ -74,9 +76,10 @@ int AddStudentWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 0: update(); break;
         case 1: { QStandardItemModel* _r = getModel();
             if (_a[0]) *reinterpret_cast< QStandardItemModel**>(_a[0]) = _r; }  break;
+        case 2: updateGpa((*reinterpret_cast< Student*(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }

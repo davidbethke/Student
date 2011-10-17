@@ -23,15 +23,16 @@ public:
 private:
     QStandardItemModel *modelCourses;
     QTreeView *treeCourses;
-    QStandardItemModel *modelStudent;
-    QTableView *tableStudent;
+    //QStandardItemModel *modelStudent;
+    //QTableView *tableStudent;
     AddStudentWidget *addStudent;
     CourseListWidget *courseList;
     void init();
 public slots:
     void createStudentWidget(QString,QString,QString);
     void updateGpa(Student*);
-    QStandardItemModel* getStudentModel();
+    //QStandardItemModel* getStudentModel();
+    CourseListWidget* getCourseList();
         
 };
 

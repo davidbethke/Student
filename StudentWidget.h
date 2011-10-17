@@ -12,12 +12,13 @@
 #include <QtGui>
 #include "Student.h"
 #include "MainWindow.h"
+#include "AddStudentWidget.h"
 class StudentWidget:public QWidget{
     Q_OBJECT
 public:
     StudentWidget(QStandardItemModel*m, QWidget *parent=0);
-    StudentWidget(Student*,QStandardItemModel*,QWidget *parent=0);
-    StudentWidget(Student*,QStandardItemModel*,QStandardItemModel*,QWidget *parent=0);
+    //StudentWidget(Student*,QStandardItemModel*,QWidget *parent=0);
+    StudentWidget(Student *,QStandardItemModel*,QStandardItemModel*,QWidget *parent=0);
 
     //StudentWidget(QWidget *parent=0);
     StudentWidget(const StudentWidget& orig);
@@ -34,7 +35,8 @@ private:
     QStandardItemModel *modelGpa;
     QTableView *courseList;
     QStandardItemModel *modelStudent;
-    Student *student;
+    Student* student;
+    AddStudentWidget *p;
     void init();
     
     public slots:

@@ -17,7 +17,7 @@ class AddStudentWidget:public QWidget {
     Q_OBJECT
 public:
     AddStudentWidget(QStandardItemModel*,QWidget *parent=0);
-    //AddStudentWidget(QStandardItemModel*,QWidget *parent=0);
+    AddStudentWidget(QWidget *parent=0);
     AddStudentWidget(const AddStudentWidget& orig);
     virtual ~AddStudentWidget();
 private:
@@ -29,12 +29,14 @@ private:
     QLineEdit *editGpa;
     QPushButton *buttonEnter;
     QStandardItemModel *modelStudent;
+    QTableView *tableStudent;
     
     void init();
     Student getStudent(QString,QString,QString);
 public slots:
     void update();
     QStandardItemModel* getModel();
+    void updateGpa(Student*);
 
 };
 

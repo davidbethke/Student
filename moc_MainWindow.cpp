@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'MainWindow.h'
 **
-** Created: Mon Oct 17 11:49:48 2011
+** Created: Mon Oct 17 15:45:43 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -33,7 +33,7 @@ static const uint qt_meta_data_MainWindow[] = {
  // slots: signature, parameters, type, tag, flags
       15,   12,   11,   11, 0x0a,
       60,   11,   11,   11, 0x0a,
-     100,   11,   80,   11, 0x0a,
+      98,   11,   80,   11, 0x0a,
 
        0        // eod
 };
@@ -41,8 +41,8 @@ static const uint qt_meta_data_MainWindow[] = {
 static const char qt_meta_stringdata_MainWindow[] = {
     "MainWindow\0\0,,\0"
     "createStudentWidget(QString,QString,QString)\0"
-    "updateGpa(Student*)\0QStandardItemModel*\0"
-    "getStudentModel()\0"
+    "updateGpa(Student*)\0CourseListWidget*\0"
+    "getCourseList()\0"
 };
 
 const QMetaObject MainWindow::staticMetaObject = {
@@ -76,8 +76,8 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         switch (_id) {
         case 0: createStudentWidget((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3]))); break;
         case 1: updateGpa((*reinterpret_cast< Student*(*)>(_a[1]))); break;
-        case 2: { QStandardItemModel* _r = getStudentModel();
-            if (_a[0]) *reinterpret_cast< QStandardItemModel**>(_a[0]) = _r; }  break;
+        case 2: { CourseListWidget* _r = getCourseList();
+            if (_a[0]) *reinterpret_cast< CourseListWidget**>(_a[0]) = _r; }  break;
         default: ;
         }
         _id -= 3;
