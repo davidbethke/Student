@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'StudentWidget.h'
 **
-** Created: Sat Oct 15 23:20:51 2011
+** Created: Mon Oct 17 11:49:54 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!

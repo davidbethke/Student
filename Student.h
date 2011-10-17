@@ -21,6 +21,7 @@ public:
     void setName(QString);
     void setHours(int);
     void setGpa(double);
+    void addCourse(int, QString);
     
 private:
     
@@ -28,8 +29,9 @@ private:
     int hoursAttempted;
     double gpa;
     void addHours(int);
-    double gradeToDouble();
+    double gradeToDouble(QString);
     void calcGpa(int,double);
+    
     
 };
 

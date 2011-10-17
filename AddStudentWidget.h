@@ -34,6 +34,7 @@ private:
     Student getStudent(QString,QString,QString);
 public slots:
     void update();
+    QStandardItemModel* getModel();
 
 };
 

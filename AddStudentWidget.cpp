@@ -64,3 +64,6 @@ void AddStudentWidget::update(){
 Student AddStudentWidget::getStudent(QString n, QString h, QString g){
     return Student(n,h.toInt(),g.toDouble());
 }
+QStandardItemModel* AddStudentWidget::getModel(){
+    return modelStudent;
+}

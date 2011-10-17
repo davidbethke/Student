@@ -17,6 +17,11 @@ StudentWidget::StudentWidget(Student *s,QStandardItemModel *m,QWidget *parent):s
     connect(buttonEnter,SIGNAL(clicked()),this,SLOT(update()));
    
 }
+StudentWidget::StudentWidget(Student *s,QStandardItemModel *mG,QStandardItemModel *m,QWidget *parent):student(s),modelGpa(mG),modelCourse(m),QWidget(parent) {
+    init();
+    connect(buttonEnter,SIGNAL(clicked()),this,SLOT(update()));
+   
+}
 
 StudentWidget::StudentWidget(const StudentWidget& orig) {
 }
@@ -59,7 +64,7 @@ void StudentWidget::init(){
     vLayout->addWidget(labelCourses);
     vLayout->addWidget(courseList);
     setLayout(vLayout);
-    setWindowTitle(student->getName());
+    setWindowTitle("Student Course List: "+student->getName());
     //setWindowTitle("some student");
 } 
 
@@ -79,7 +84,25 @@ void StudentWidget::update(){
     QList<QStandardItem *> list;
     list << title<<hours<< grade;
     modelStudent->appendRow(list);
-          //  modelStudent->setItem(0,1,new QStandardItem(comboCourse->itemText(comboCourse->currentIndex())));
+    //student = new Student()
+    //  modelStudent->setItem(0,1,new QStandardItem(comboCourse->itemText(comboCourse->currentIndex())));
+    // calc new gpa and add hours to hours completed, then update model from parent
+    //double gradeConv=student->gradeToDouble(comboGrade->itemText(comboGrade->currentIndex()));
+    student->addCourse(hours->text().toInt(),comboGrade->itemText(comboGrade->currentIndex()));
+    //student->addHours(hours->text().toInt());
+    //update model with getGpa and getHours
+    // fucking fuck up mother fucker
+    QString  qFuck1,qFuck2, qFuck3;
+    
+    qFuck1="Fuck1";qFuck2="Fuck2";qFuck3="Fuck3";
+    QStandardItem *fuck1 = new QStandardItem(qFuck1);
+    QStandardItem *fuck2 = new QStandardItem(qFuck2);
+    QStandardItem *fuck3 = new QStandardItem(qFuck3);
+    QList<QStandardItem *> list2;
+    list2 << fuck1<<fuck2<<fuck3;
+    static_cast<MainWindow *>(parentWidget())->getStudentModel()->appendRow(list2);
+    //addStudent->getModel()->appendRow(list);
+    static_cast<MainWindow *>(parentWidget())->updateGpa(student);
 
 }
 void StudentWidget::setModel(QStandardItemModel *m){

@@ -30,6 +30,8 @@ private:
     void init();
 public slots:
     void createStudentWidget(QString,QString,QString);
+    void updateGpa(Student*);
+    QStandardItemModel* getStudentModel();
         
 };
 

@@ -11,11 +11,14 @@
 #include <QWidget>
 #include <QtGui>
 #include "Student.h"
+#include "MainWindow.h"
 class StudentWidget:public QWidget{
     Q_OBJECT
 public:
     StudentWidget(QStandardItemModel*m, QWidget *parent=0);
     StudentWidget(Student*,QStandardItemModel*,QWidget *parent=0);
+    StudentWidget(Student*,QStandardItemModel*,QStandardItemModel*,QWidget *parent=0);
+
     //StudentWidget(QWidget *parent=0);
     StudentWidget(const StudentWidget& orig);
     virtual ~StudentWidget();
@@ -28,6 +31,7 @@ private:
     QPushButton *buttonEnter;
     QStringListModel *modelGrade;
     QStandardItemModel *modelCourse;
+    QStandardItemModel *modelGpa;
     QTableView *courseList;
     QStandardItemModel *modelStudent;
     Student *student;
