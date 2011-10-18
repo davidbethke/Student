@@ -17,8 +17,10 @@ class StudentWidget:public QWidget{
     Q_OBJECT
 public:
     StudentWidget(QStandardItemModel*m, QWidget *parent=0);
-    //StudentWidget(Student*,QStandardItemModel*,QWidget *parent=0);
+    StudentWidget(Student*,QStandardItemModel*,QWidget *parent=0);
     StudentWidget(Student *,QStandardItemModel*,QStandardItemModel*,QWidget *parent=0);
+    StudentWidget(Student *,QStandardItemModel*,QStandardItemModel*,QStandardItemModel*,QWidget *parent=0);
+
 
     //StudentWidget(QWidget *parent=0);
     StudentWidget(const StudentWidget& orig);
@@ -33,6 +35,7 @@ private:
     QStringListModel *modelGrade;
     QStandardItemModel *modelCourse;
     QStandardItemModel *modelGpa;
+    QStandardItemModel *modelTreeCourse;
     QTableView *courseList;
     QStandardItemModel *modelStudent;
     Student* student;

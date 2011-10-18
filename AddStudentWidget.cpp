@@ -35,6 +35,11 @@ void AddStudentWidget::init(){
     editHours = new QLineEdit;
     editGpa= new QLineEdit;
     buttonEnter= new QPushButton("Add Student");
+    // course tree
+    treeCourse = new QTreeView;
+    modelCourse = new QStandardItemModel;
+    treeCourse->setModel(modelCourse);
+    //treeCourse->setRootIsDecorated(true);
     // modelStudent setup
     QStringList header;
     header.append(QString("Name"));
@@ -54,6 +59,7 @@ void AddStudentWidget::init(){
     layout->addWidget(buttonEnter);
     vLayout->addLayout(layout);
     vLayout->addWidget(tableStudent);
+    vLayout->addWidget(treeCourse);
     
     setLayout(vLayout);
     //resize(400,60);
@@ -85,7 +91,9 @@ void AddStudentWidget::update(){
     someStudent->setHours(editHours->text().toInt());
     someStudent->setGpa(editGpa->text().toDouble());
     //QMessageBox::information(this,QString("Result"),QString("name:"+someStudent->getName()));
-    StudentWidget *studentWidget = new StudentWidget(someStudent,modelStudent,static_cast<MainWindow *>(parentWidget())->getCourseList()->getModel());
+    StudentWidget *studentWidget = new StudentWidget(someStudent,modelCourse,modelStudent,static_cast<MainWindow *>(parentWidget())->getCourseList()->getModel());
+    //StudentWidget *studentWidget = new StudentWidget(someStudent,static_cast<MainWindow *>(parentWidget())->getCourseList()->getModel());
+
     studentWidget->show();
 }
 Student AddStudentWidget::getStudent(QString n, QString h, QString g){
@@ -94,15 +102,72 @@ Student AddStudentWidget::getStudent(QString n, QString h, QString g){
 QStandardItemModel* AddStudentWidget::getModel(){
     return modelStudent;
 }
-void AddStudentWidget::updateGpa(Student *s){
+void AddStudentWidget::updateGpa(QStandardItemModel *modelStudent,Student *s){
+    
     // take from main
     QString hoursInt, gpaDouble;
-    //QString dave = "Dave";
+    QString dave = "Fucker";
+    //QModelIndex index = modelGpa->pare
     QStandardItem *name = new QStandardItem(s->getName());
     //QStandardItem *daveName = new QStandardItem(dave);
-    QStandardItem *hours = new QStandardItem(hoursInt.setNum(s->getHours()));
-    QStandardItem *gpa = new QStandardItem(gpaDouble.setNum(s->getGpa()));
-    QModelIndex index = getModel()->indexFromItem(name);
-   // modelStudent->setItem(index.row(),1,hours);
-   // modelStudent->setItem(index.row(),2,gpa);
+    QStandardItem *hoursG = new QStandardItem(hoursInt.setNum(s->getHours()));
+    QStandardItem *gpaG = new QStandardItem(gpaDouble.setNum(s->getGpa()));
+    //modelGpa->findItems()
+    // loop on fucking model?
+    int studentRow=0;
+    for (int i=0; i< modelStudent->rowCount();i++)
+    {
+        if(modelStudent->item(i,0)->text() == s->getName())
+            studentRow=i;
+        }
+    //QModelIndex index = modelGpa->indexFromItem(name);
+    modelStudent->setItem(studentRow,1,hoursG);
+    modelStudent->setItem(studentRow,2,gpaG);
+}
+void AddStudentWidget::updateCourse(QStandardItemModel* modelTreeCourse,QStandardItemModel* modelCourseAll, Student *s,QStandardItem* title){
+    bool appended=false;
+    QStandardItem *name = new QStandardItem(s->getName());
+    QString nKitty="Kitty";
+    QStandardItem *kitty = new QStandardItem(nKitty);
+    // kluge way of doing it
+    // iterate over tree then total
+    for (int j=0; j< modelTreeCourse->rowCount();j++)
+    {
+        if(modelTreeCourse->item(j,0)->text() ==  title->text())
+        {
+            modelTreeCourse->item(j,0)->setChild(modelTreeCourse->item(j,0)->rowCount(),name);
+            appended=true;
+        }
+    }
+    
+    // set up everything
+    /*
+    for(int j=0; j < modelCourseAll->rowCount();j++)
+    {
+        modelTreeCourse->setItem(j,0,modelCourseAll->item(j,0)->clone());
+        modelTreeCourse->item(j,0)->setChild(0,name->clone());
+        modelTreeCourse->item(j,0)->setChild(modelTreeCourse->item(j,0)->rowCount(),kitty->clone());
+
+    }
+     */
+    //modelCourse->
+    if (!appended)
+    {
+        int row=0;
+        for (int i=0; i < modelCourseAll->rowCount();i++)
+        {
+            qDebug()<<"looping";
+            if(modelCourseAll->item(i,0)->text() ==  title->text())
+            {
+
+                qDebug() <<"got here"+ i;
+                modelTreeCourse->setItem(modelTreeCourse->rowCount(),0,modelCourseAll->item(i,0)->clone());
+                modelTreeCourse->item(modelTreeCourse->rowCount()-1,0)->setChild(0,name->clone());
+                row=i;
+            }
+        }
+    }
+    //modelTreeCourse->setItem(row,0,title);
+    //modelTreeCourse->item(row,0)->setChild(0,name);
+    
 }

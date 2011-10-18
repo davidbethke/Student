@@ -21,8 +21,8 @@ public:
     virtual ~MainWindow();
    
 private:
-    QStandardItemModel *modelCourses;
-    QTreeView *treeCourses;
+    //QStandardItemModel *modelCourses;
+    //QTreeView *treeCourses;
     //QStandardItemModel *modelStudent;
     //QTableView *tableStudent;
     AddStudentWidget *addStudent;

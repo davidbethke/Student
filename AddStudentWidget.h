@@ -29,14 +29,17 @@ private:
     QLineEdit *editGpa;
     QPushButton *buttonEnter;
     QStandardItemModel *modelStudent;
+    QStandardItemModel *modelCourse;
     QTableView *tableStudent;
-    
+    QTreeView *treeCourse;
+    bool COURSE_SET;
     void init();
     Student getStudent(QString,QString,QString);
 public slots:
     void update();
     QStandardItemModel* getModel();
-    void updateGpa(Student*);
+    void updateGpa(QStandardItemModel*,Student*);
+    void updateCourse(QStandardItemModel*,QStandardItemModel*,Student*,QStandardItem*);
 
 };
 

@@ -19,9 +19,9 @@ MainWindow::~MainWindow() {
 }
 void MainWindow::init(){
     
-    modelCourses = new QStandardItemModel;
+   // modelCourses = new QStandardItemModel;
    // modelStudent = new QStandardItemModel;
-    treeCourses = new QTreeView;
+    //treeCourses = new QTreeView;
     //tableStudent = new QTableView;
     addStudent = new AddStudentWidget();
     courseList = new CourseListWidget;
@@ -33,16 +33,16 @@ void MainWindow::init(){
    // modelStudent->setHorizontalHeaderLabels(header);
     //tableStudent->setModel(modelStudent);
     //tableStudent->setMinimumWidth(300);
-    treeCourses->setModel(modelCourses);
+    //treeCourses->setModel(modelCourses);
     // layout
-    QVBoxLayout *vLayout = new QVBoxLayout;
+    //QVBoxLayout *vLayout = new QVBoxLayout;
     QVBoxLayout *vLayout2 = new QVBoxLayout;
     QHBoxLayout *hLayout = new QHBoxLayout;
-    vLayout->addWidget(treeCourses);
+    //vLayout->addWidget(treeCourses);
     //vLayout->addWidget(tableStudent);
     vLayout2->addWidget(addStudent);
     vLayout2->addWidget(courseList);
-    hLayout->addLayout(vLayout);
+    //hLayout->addLayout(vLayout);
     hLayout->addLayout(vLayout2);
     setLayout(hLayout);
     /*

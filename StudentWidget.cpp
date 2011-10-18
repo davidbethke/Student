@@ -12,14 +12,19 @@ StudentWidget::StudentWidget(QStandardItemModel *m,QWidget *parent):modelCourse(
     connect(buttonEnter,SIGNAL(clicked()),this,SLOT(update()));
    
 }
-/*
+
 StudentWidget::StudentWidget(Student *s,QStandardItemModel *m,QWidget *parent):student(s),modelCourse(m),QWidget(parent) {
     init();
     connect(buttonEnter,SIGNAL(clicked()),this,SLOT(update()));
    
 }
- */
+ 
 StudentWidget::StudentWidget(Student *s,QStandardItemModel *mG,QStandardItemModel *m,QWidget *parent):student(s),modelGpa(mG),modelCourse(m),QWidget(parent) {
+    init();
+    connect(buttonEnter,SIGNAL(clicked()),this,SLOT(update()));
+   
+}
+StudentWidget::StudentWidget(Student *s,QStandardItemModel *mTC,QStandardItemModel *mG,QStandardItemModel *m,QWidget *parent):student(s),modelTreeCourse(mTC),modelGpa(mG),modelCourse(m),QWidget(parent) {
     init();
     connect(buttonEnter,SIGNAL(clicked()),this,SLOT(update()));
    
@@ -89,7 +94,10 @@ void StudentWidget::update(){
     modelStudent->appendRow(list);
     
     student->addCourse(hours->text().toInt(),comboGrade->itemText(comboGrade->currentIndex()));
-    
+    static_cast<AddStudentWidget*>(parentWidget())->updateGpa(modelGpa,student);
+    static_cast<AddStudentWidget*>(parentWidget())->updateCourse(modelTreeCourse,modelCourse,student,title);
+
+    /*
     // take from main
     QString hoursInt, gpaDouble;
     QString dave = "Fucker";
@@ -109,6 +117,7 @@ void StudentWidget::update(){
     //QModelIndex index = modelGpa->indexFromItem(name);
     modelGpa->setItem(studentRow,1,hoursG);
     modelGpa->setItem(studentRow,2,gpaG);
+     */
 
 }
 void StudentWidget::setModel(QStandardItemModel *m){
