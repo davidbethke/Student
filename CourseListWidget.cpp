@@ -53,14 +53,10 @@ void CourseListWidget::init(){
 }
 
 void CourseListWidget::update(){
-    //fill it in
-    //QMessageBox::information(this,QString("Result"),QString("Course:"+editCourse->text()+" Hours:"+comboHours->itemText(comboHours->currentIndex())));
     QStandardItem *title= new QStandardItem(editCourse->text());
     QStandardItem *hours = new QStandardItem(comboHours->itemText(comboHours->currentIndex()));
     QList<QStandardItem *> list;
     list << title<< hours;
-    //courseList->setItem(0,0,title);
-    //courseList->setItem(0,1,hours);
     courseList->appendRow(list);
     
 }
